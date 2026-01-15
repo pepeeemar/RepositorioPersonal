@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Bolsa de trabajo</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <section id="unete" class="jobs-section">
+    <div class="container">
+        <div class="jobs-grid">
+            <div class="jobs-info">
+                <span class="tag">¡Únete al equipo!</span>
+                <h2>Forma parte de nuestra Bolsa de Trabajo</h2>
+                <p>Estamos buscando personal comprometido para nuestras vacantes en Apodaca y zona metropolitana.</p>
+                <ul class="jobs-benefits">
+                    <li>✅ Prestaciones de ley desde el primer día.</li>
+                    <li>✅ Uniformes y equipo de seguridad gratuito.</li>
+                    <li>✅ Capacitación constante en limpieza industrial.</li>
+                </ul>
+            </div>
+
+            <div class="form-wrapper">
+                <form class="application-form">
+                    <div class="form-group">
+                        <label>Nombre Completo</label>
+                        <input type="text" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Teléfono de Contacto</label>
+                        <input type="tel" placeholder="811 000 0000" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>¿A qué puesto te postulas?</label>
+                        <select required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="limpieza">Auxiliar de Limpieza</option>
+                            <option value="seguridad">Guardia de Seguridad</option>
+                            <option value="supervisor">Supervisor de Zona</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sube tu CV (PDF o Imagen)</label>
+                        <input type="file" class="file-input" accept=".pdf,.jpg,.png">
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
