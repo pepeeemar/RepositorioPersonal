@@ -1,0 +1,402 @@
+/* Configuración General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+.logo span { color: #e63946; }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links li { margin-left: 20px; }
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.btn-nav {
+    background: #0056b3;
+    color: #fff !important;
+    padding: 8px 20px;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1521791136064-7986c2923216?auto=format&fit=crop&q=80&w=1500') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+
+    /* Configuración de la Imagen de Fondo */
+    background-image: url('https://static.wixstatic.com/media/e00276_c83e99b0f1644d49b0d3c386bf6f1305~mv2.png/v1/fill/w_1528,h_787,al_c,q_90,enc_avif,quality_auto/e00276_c83e99b0f1644d49b0d3c386bf6f1305~mv2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    background-color: skyblue;
+    
+    /* EL TRUCO PARA QUE SEA ESTÁTICA */
+    background-attachment: fixed; 
+}
+
+.hero-content .badge { font-size: 6rem; 
+    font-weight: bolder;
+    margin-bottom: 10px; 
+    color: white;
+}
+
+.hero-content h1 { font-size: 3rem; 
+    font-weight: bold;
+    margin-bottom: 10px; 
+    color: white;
+}
+
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.btn-main {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Servicios */
+.services { padding: 80px 10%; text-align: center; }
+
+.grid-services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.card {
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.carousel-section {
+    padding: 60px 0;
+    background: #fff;
+    text-align: center;
+}
+
+/* Contenedor principal */
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.cards {
+    display: flex;
+    width: 300%; /* Porque son 3 imágenes */
+    transition: transform 0.5s ease-in-out;
+}
+
+.card-item {
+    width: 100%;
+    position: relative;
+}
+
+.card-item img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Lógica de movimiento */
+#item-1:checked ~ .cards { transform: translateX(0); }
+#item-2:checked ~ .cards { transform: translateX(-33.333%); }
+#item-3:checked ~ .cards { transform: translateX(-66.666%); }
+
+/* Estilo General de Flechas (Labels) */
+.prev-arrow, .next-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+    z-index: 10;
+    display: none; /* Se ocultan por defecto */
+    transition: 0.3s;
+}
+
+.prev-arrow:hover, .next-arrow:hover {
+    background: #007bff;
+    color: white;
+}
+
+.prev-arrow { left: 20px; }
+.next-arrow { right: 20px; }
+
+/* MOSTRAR FLECHAS SOLO DEL SLIDE ACTIVO */
+#item-1:checked ~ .cards #img-1 .prev-arrow,
+#item-1:checked ~ .cards #img-1 .next-arrow,
+#item-2:checked ~ .cards #img-2 .prev-arrow,
+#item-2:checked ~ .cards #img-2 .next-arrow,
+#item-3:checked ~ .cards #img-3 .prev-arrow,
+#item-3:checked ~ .cards #img-3 .next-arrow {
+    display: block;
+}
+
+/* Esconder los inputs de radio */
+input[name="slider"] { display: none; }
+.info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 123, 255, 0.8); /* Azul limpieza */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Escondemos los inputs de radio */
+input[name="slider"] {
+    display: none;
+}
+
+/* Lógica de movimiento */
+#item-1:checked ~ .cards { transform: translateX(0); }
+#item-2:checked ~ .cards { transform: translateX(-33.33%); }
+#item-3:checked ~ .cards { transform: translateX(-66.66%); }
+
+/* Estilo de los puntitos (Dots) */
+.dots {
+    margin-top: 20px;
+}
+
+.dots label {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#item-1:checked ~ .dots label[for="item-1"],
+#item-2:checked ~ .dots label[for="item-2"],
+#item-3:checked ~ .dots label[for="item-3"] {
+    background: #007bff;
+    width: 30px;
+    border-radius: 10px;
+}
+
+/* Sección de Seguridad */
+.security-strip {
+    background: linear-gradient(135deg, #1a2a6c, #2a4858); /* Gradiente profesional oscuro */
+    color: #ffffff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.security-header {
+    margin-bottom: 60px;
+}
+
+.security-header .tag {
+    background: #e63946; /* Rojo de acento para atención */
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.security-header h2 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
+.security-header p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Cuadrícula de tarjetas */
+.security-grid {
+    display: flex;
+    flex-wrap: wrap; /* Tu wrap para móviles */
+    gap: 30px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.security-card {
+    background: rgba(255, 255, 255, 0.05); /* Fondo sutil traslúcido */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 15px;
+    flex: 1 1 300px; /* Tamaño responsivo */
+    max-width: 350px;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+}
+
+.security-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #007bff; /* Brillo azul al pasar el mouse */
+}
+
+.sec-icon {
+    font-size: 50px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.security-card h3 {
+    margin-bottom: 15px;
+    color: #007bff; /* Color destacado para el título de la tarjeta */
+}
+
+.security-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+.location-section {
+    padding: 80px 0;
+    background: #f8f9fa;
+}
+
+.location-grid {
+    display: flex;
+    flex-wrap: wrap; /* Usamos tu wrap favorito */
+    gap: 40px;
+    align-items: center;
+}
+
+.location-info {
+    flex: 1 1 400px;
+    text-align: left;
+}
+
+.location-info .tag {
+    color: #007bff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.location-info h2 {
+    font-size: 2.2rem;
+    margin: 15px 0;
+    color: #212529;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.contact-item .icon {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.container {
+    width: 90%;            /* Ocupa el 90% del ancho de la pantalla */
+    max-width: 1200px;     /* Pero no se estira más de 1200px en monitores grandes */
+    margin: 0 auto;        /* Centra el bloque automáticamente */
+    padding: 0 20px;       /* Crea un "colchón" de seguridad en los costados */
+}
+
+.map-container {
+    flex: 1 1 400px;
+    border-radius: 20px;
+    overflow: hidden; /* Corta las esquinas del mapa para que se vea redondeado */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.map-container iframe {
+    display: block; /* Elimina espacios extra debajo del iframe */
+}
